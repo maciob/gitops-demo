@@ -9,9 +9,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: https://kubernetes.default.svc
+    name: in-cluster
     namespace: application2-env1
-  project: some-team
+  # project: some-team
   source:
     helm:
       releaseName: application2
