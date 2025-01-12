@@ -1,2 +1,3 @@
-image:
-  tag: "1.18"
+application1:
+  image:
+    tag: "1.18"
