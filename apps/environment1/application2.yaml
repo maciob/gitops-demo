@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application2-env1
+  namespace: argocd
+  labels:
+    env: env1
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: https://kubernetes.default.svc
+    namespace: application2-env1
+  project: some-team
+  source:
+    helm:
+      releaseName: application2
+      valueFiles:
+        - values.yaml
+        - values.deploy-env1.yaml
+    path: charts/application2
+    repoURL: https://github.com/maciob/gitops-demo
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
