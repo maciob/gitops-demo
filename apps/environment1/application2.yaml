@@ -11,7 +11,7 @@ spec:
   destination:
     name: in-cluster
     namespace: application2-env1
-  project: some-team
+  project: default
   source:
     helm:
       releaseName: application2
